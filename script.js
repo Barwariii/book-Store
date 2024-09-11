@@ -202,7 +202,8 @@ function init() {
                     <p class="card-text">genre: ${element.genre} </p>
                     <p class="card-text">price: ${element.price} € </p>
                 </div>
-                <div id="comments_sec${i}"></div>
+            </div>
+        </div>
         `
     }
 }
