@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: bisque !important;
+
+}
+
+
+.main {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 100%;
+}
+
+h1 {
+    margin: 40px 0px 72px 0px !important;
+    text-align: center;
+}
+
+#content {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    flex-direction: row;
+    gap: 36px !important;
+    width: 80%;
+}
+
+.card-img-top {
+    padding-bottom: 0 !important;
+    flex: 1 1 350px !important;
+    height: 250px;
+}
+
+
+h5 {
+    font-size: 19px !important;
+}
+
+
+p {
+    margin-bottom: 8px !important;
+}
