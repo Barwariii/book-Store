@@ -52,20 +52,6 @@ p {
 }
 
 
-#likebtn {
-    width: 24px;
-}
-
-#likebtn:hover {
-    cursor: pointer;
-}
-
-#like_btn {
-    width: 36px;
-}
-
-
-
 /* Comment section */
 
 .comments-sec {
@@ -83,7 +69,7 @@ p {
     justify-content: space-between;
 }
 
-.comment-box input{
+.comment-box input {
     border: 2px solid rgba(0, 0, 0, 0.5);
     border-radius: 8px;
 }
@@ -95,5 +81,29 @@ p {
 }
 
 .send-comment-icn:hover {
+    cursor: pointer;
+}
+
+
+/* Likes section */
+.likes-sec {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    gap: 16px;
+    border-top: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+.likes-sec p {
+    text-align: center;
+}
+
+.like-btn {
+    width: 28px;
+    padding-bottom: 18px;
+}
+
+.like-btn:hover {
     cursor: pointer;
 }

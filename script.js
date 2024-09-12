@@ -195,14 +195,25 @@ function init() {
         <div class="card-box">
             <div class="card" id="card" style="width: 18rem;">
                 <img src="./img/${element.pic}" class="card-img-top" alt="...">
-                <div class="card-body" id="card_body"
+                <div class="card-body" id="card_body">
+                    <!-- product info -->
                     <h5 class="card-title">${element.name}</h5>
                     <p class="card-text">author: ${element.author} </p>
                     <p class="card-text">publishedYear: ${element.publishedYear} </p>
                     <p class="card-text">genre: ${element.genre} </p>
                     <p class="card-text">price: ${element.price} € </p>
                 </div>
+
+                <!-- Likes -->
+                <div class="likes-sec" id="likes_sec${i}">
+                <p>Likes: ${element.likes}</p>
+                <img onclick="#" id="like_btn" class="like-btn" src="./icn/noneliked.png" alt="">
+                </div>
+
+                <!-- show comment -->
                 <div class="comments-sec" id="comments_sec${i}"></div>
+
+                <!-- add new comment -->
                 <div class="comment-box" id="comment_box">
                         <input id="comment_input" type="text" placeholder="Komentare schreiben!">
                         <img onclick="addNewComment(${i})" src="./icn/send.png" class="send-comment-icn" alt="...">
@@ -210,6 +221,7 @@ function init() {
             </div>
         </div>
         `
+        renderLikes(element, i);
         renderCommentsection(element, i);
     }
 }
@@ -224,12 +236,26 @@ function renderCommentsection(element, i) {
 
 
         commentRef.innerHTML += /*html*/ `
-            <div>
                 <p id="user_name">${commentsElement.name}</p>
                 <p id="user_comment">${commentsElement.comment}</p>
-            </div>
             `
     }
+}
+
+
+function renderLikes(element, i) {
+    let likesRef = document.getElementById(`likes_sec${i}`);
+    likesRef.innerHTML += "";
+
+    for (let j = 0; j < element.likes.length; j++) {
+        const LikesElement = element.likes;
+     
+        // likesRef.innerHTML += /*html*/ `
+        //         <p>Likes: ${LikesElement}</p>
+        //         <img onclick="#" id="like_btn" class="like-btn" src="./icn/noneliked.png" alt="">
+        // `
+    }
+
 }
 
 
