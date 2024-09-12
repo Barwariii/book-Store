@@ -192,18 +192,47 @@ function init() {
         const element = books[i];
 
         contentRef.innerHTML += /*html*/ `
-        <div>
-            <div class="card" style="width: 18rem;">
+        <div class="card-box">
+            <div class="card" id="card" style="width: 18rem;">
                 <img src="./img/${element.pic}" class="card-img-top" alt="...">
-                <div class="card-body">
+                <div class="card-body" id="card_body"
                     <h5 class="card-title">${element.name}</h5>
                     <p class="card-text">author: ${element.author} </p>
                     <p class="card-text">publishedYear: ${element.publishedYear} </p>
                     <p class="card-text">genre: ${element.genre} </p>
                     <p class="card-text">price: ${element.price} € </p>
                 </div>
+                <div class="comments-sec" id="comments_sec${i}"></div>
+                <div class="comment-box" id="comment_box">
+                        <input id="comment_input" type="text" placeholder="Komentare schreiben!">
+                        <img onclick="addNewComment(${i})" src="./icn/send.png" class="send-comment-icn" alt="...">
+                </div>
             </div>
         </div>
         `
+        renderCommentsection(element, i);
     }
+}
+
+
+function renderCommentsection(element, i) {
+    let commentRef = document.getElementById(`comments_sec${i}`);
+    commentRef.innerHTML += "";
+
+    for (let index = 0; index < element.comments.length; index++) {
+        const commentsElement = element.comments[index];
+
+
+        commentRef.innerHTML += /*html*/ `
+            <div>
+                <p id="user_name">${commentsElement.name}</p>
+                <p id="user_comment">${commentsElement.comment}</p>
+            </div>
+            `
+    }
+}
+
+
+function addNewComment(i) {
+    
 }
