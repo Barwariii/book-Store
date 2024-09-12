@@ -3,7 +3,7 @@ let books = [
         "name": "Die Geheimnisse des Ozeans",
         "author": "Clara Meer",
         "likes": 1250,
-        "liked": true,
+        "liked": false,
         "price": 19.99,
         "publishedYear": 2018,
         "genre": "Fantasy",
@@ -206,8 +206,8 @@ function init() {
 
                 <!-- Likes -->
                 <div class="likes-sec" id="likes_sec${i}">
-                <p>Likes: ${element.likes}</p>
-                <img onclick="#" id="like_btn" class="like-btn" src="./icn/noneliked.png" alt="">
+                <p id="like_amount${i}">Likes: ${element.likes}</p>
+                <img onclick="likeBook(${i})" id="like_btn${i}" class="like-btn" src="./icn/noneliked.png" alt="">
                 </div>
 
                 <!-- show comment -->
@@ -216,13 +216,14 @@ function init() {
                 <!-- add new comment -->
                 <div class="comment-box" id="comment_box">
                         <input id="comment_input" type="text" placeholder="Komentare schreiben!">
-                        <img onclick="addNewComment(${i})" src="./icn/send.png" class="send-comment-icn" alt="...">
+                        <img onclick="addNewComment()" src="./icn/send.png" class="send-comment-icn" alt="...">
                 </div>
             </div>
         </div>
         `
         renderLikes(element, i);
         renderCommentsection(element, i);
+        // addNewComment(element, i);
     }
 }
 
@@ -248,7 +249,7 @@ function renderLikes(element, i) {
     likesRef.innerHTML += "";
 
     for (let j = 0; j < element.likes.length; j++) {
-        const LikesElement = element.likes;
+        // const LikesElement = element.likes;
      
         // likesRef.innerHTML += /*html*/ `
         //         <p>Likes: ${LikesElement}</p>
@@ -259,6 +260,38 @@ function renderLikes(element, i) {
 }
 
 
-function addNewComment(i) {
+// likes section
+function likeBook(j) {
+    let likeAmount = document.getElementById(`like_amount${j}`);
+
     
+    if (books[j].liked == false) {
+        // document.getElementById(`like_amount${j}`).innerHTML = `${(books[j].likes += 1)}`
+        books[j].likes += 1;
+        books[j].liked = true;
+        document.getElementById(`like_btn${j}`).src = "./icn/liked.png";
+        document.getElementById(`like_btn${j}`).style.width = "36px";
+    } else {
+        books[j].likes -= 1;
+        books[j].liked = false;
+        document.getElementById(`like_btn${j}`).src = "./icn/noneliked.png";
+        document.getElementById(`like_btn${j}`).style.width = "28px";
+    }
+
+    likeAmount.innerHTML = `Likes: ${books[j].likes}`;
+}
+
+
+
+// add comments section
+function addNewComment(element, i) {
+    let newCommentRef = document.getElementById('comment_input');
+    let newComment = newCommentRef.value;
+
+    if (newCommentRef.value != "" ) {
+        element.comments[i].comment.push(newComment);
+
+
+        newCommentRef.value = "";
+    }
 }
