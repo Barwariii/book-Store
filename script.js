@@ -266,10 +266,13 @@ function renderLikes(element, i) {
     likesRef.innerHTML += "";
 
 
+
     if (books[i].liked == false) {
+
         document.getElementById(`like_btn${i}`).src = "./icn/liked.png";
         document.getElementById(`like_btn${i}`).style.width = "36px";
     } else {
+
         document.getElementById(`like_btn${i}`).src = "./icn/noneliked.png";
         document.getElementById(`like_btn${i}`).style.width = "28px";
     }
