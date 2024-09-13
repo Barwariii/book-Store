@@ -236,7 +236,6 @@ function renderCommentsection(element, i) {
     for (let index = 0; index < element.comments.length; index++) {
         const commentsElement = element.comments[index];
 
-
         commentRef.innerHTML += /*html*/ `
                 <p id="user_name">${commentsElement.name}</p>
                 <p id="user_comment">${commentsElement.comment}</p>
@@ -249,16 +248,12 @@ function renderCommentsection(element, i) {
 function addNewComment(i) {
     let newCommentRef = document.getElementById(`comment_input${i}`);
     let newComment = newCommentRef.value;
-
     if (newComment != "" ) {
         books[i].comments.push({
             "name": "Guest",
             "comment": newComment
         });
-
-
         newCommentRef.value = "";
-
         init();
     }
 }
@@ -270,49 +265,30 @@ function renderLikes(element, i) {
     let likesRef = document.getElementById(`likes_sec${i}`);
     likesRef.innerHTML += "";
 
-    for (let j = 0; j < element.likes.length; j++) {
-        // const LikesElement = element.likes;
-     
-        // likesRef.innerHTML += /*html*/ `
-        //         <p>Likes: ${LikesElement}</p>
-        //         <img onclick="#" id="like_btn" class="like-btn" src="./icn/noneliked.png" alt="">
-        // `
-    }
 
     if (books[i].liked == false) {
-        // document.getElementById(`like_amount${j}`).innerHTML = `${(books[j].likes += 1)}`
+        document.getElementById(`like_btn${i}`).src = "./icn/liked.png";
+        document.getElementById(`like_btn${i}`).style.width = "36px";
+    } else {
+        document.getElementById(`like_btn${i}`).src = "./icn/noneliked.png";
+        document.getElementById(`like_btn${i}`).style.width = "28px";
+    }
+}
+
+
+function likeBook(i) {
+    let likeAmount = document.getElementById(`like_amount${i}`);
+    if (books[i].liked == true) {
         books[i].likes += 1;
-        books[i].liked = true;
+        books[i].liked = false;
         document.getElementById(`like_btn${i}`).src = "./icn/liked.png";
         document.getElementById(`like_btn${i}`).style.width = "36px";
     } else {
         books[i].likes -= 1;
-        books[i].liked = false;
+        books[i].liked = true;
         document.getElementById(`like_btn${i}`).src = "./icn/noneliked.png";
         document.getElementById(`like_btn${i}`).style.width = "28px";
     }
-
-}
-
-
-
-function likeBook(j) {
-    let likeAmount = document.getElementById(`like_amount${j}`);
-
-    
-    if (books[j].liked == false) {
-        // document.getElementById(`like_amount${j}`).innerHTML = `${(books[j].likes += 1)}`
-        books[j].likes += 1;
-        books[j].liked = true;
-        document.getElementById(`like_btn${j}`).src = "./icn/liked.png";
-        document.getElementById(`like_btn${j}`).style.width = "36px";
-    } else {
-        books[j].likes -= 1;
-        books[j].liked = false;
-        document.getElementById(`like_btn${j}`).src = "./icn/noneliked.png";
-        document.getElementById(`like_btn${j}`).style.width = "28px";
-    }
-
-    likeAmount.innerHTML = `Likes: ${books[j].likes}`;
+    likeAmount.innerHTML = `Likes: ${books[i].likes}`;
 }
 
