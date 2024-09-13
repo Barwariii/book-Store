@@ -13,9 +13,10 @@ footer {
 .footer_content {
     display: flex;
     box-sizing: border-box;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
     max-width: 1440px;
+    gap: 24px;
 }
 
 footer img {
@@ -61,9 +62,6 @@ footer img {
     footer {
         height: 86px;
         background-color: #403B3B;
-        padding-left: 24px;
-        padding-right: 24px;
-        margin: 0 -64px;
     }
 
     footer img {
@@ -85,7 +83,7 @@ footer img {
         background-color: #403B3B;
         padding-left: 16px;
         padding-right: 16px;
-        margin: 0 -32px;
+
     }
 
     footer img {

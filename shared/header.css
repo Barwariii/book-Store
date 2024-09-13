@@ -4,7 +4,7 @@ header {
     background-color: #3b3b3b;
     box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.062);
     margin: 0px;
-    padding: 8px 128px 0px;
+    /* padding: 8px 128px 0px; */
     justify-content: center;
 }
 
@@ -14,15 +14,14 @@ header {
     box-sizing: border-box;
     max-width: 1440px;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .logo-content {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    padding-left: 36px;
+    gap: 24px;
 }
 
 .store-name {

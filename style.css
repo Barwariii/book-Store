@@ -107,3 +107,10 @@ p {
 .like-btn:hover {
     cursor: pointer;
 }
+
+/* Responsive Design */
+@media(max-width: 444px) {
+    #content {
+        width: 100%;
+    }
+}
