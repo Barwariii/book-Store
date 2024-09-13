@@ -215,19 +215,20 @@ function init() {
 
                 <!-- add new comment -->
                 <div class="comment-box" id="comment_box">
-                        <input id="comment_input" type="text" placeholder="Komentare schreiben!">
-                        <img onclick="addNewComment()" src="./icn/send.png" class="send-comment-icn" alt="...">
+                        <input id="comment_input${i}" type="text" placeholder="Komentare schreiben!">
+                        <img onclick="addNewComment(${i})" src="./icn/send.png" class="send-comment-icn" alt="...">
                 </div>
             </div>
         </div>
         `
         renderLikes(element, i);
         renderCommentsection(element, i);
-        // addNewComment(element, i);
+        addNewComment(i);
     }
 }
 
 
+//comments section
 function renderCommentsection(element, i) {
     let commentRef = document.getElementById(`comments_sec${i}`);
     commentRef.innerHTML += "";
@@ -244,6 +245,27 @@ function renderCommentsection(element, i) {
 }
 
 
+// add comments section
+function addNewComment(i) {
+    let newCommentRef = document.getElementById(`comment_input${i}`);
+    let newComment = newCommentRef.value;
+
+    if (newComment != "" ) {
+        books[i].comments.push({
+            "name": "Guest",
+            "comment": newComment
+        });
+
+
+        newCommentRef.value = "";
+
+        init();
+    }
+}
+
+
+
+// likes section
 function renderLikes(element, i) {
     let likesRef = document.getElementById(`likes_sec${i}`);
     likesRef.innerHTML += "";
@@ -257,10 +279,23 @@ function renderLikes(element, i) {
         // `
     }
 
+    if (books[i].liked == false) {
+        // document.getElementById(`like_amount${j}`).innerHTML = `${(books[j].likes += 1)}`
+        books[i].likes += 1;
+        books[i].liked = true;
+        document.getElementById(`like_btn${i}`).src = "./icn/liked.png";
+        document.getElementById(`like_btn${i}`).style.width = "36px";
+    } else {
+        books[i].likes -= 1;
+        books[i].liked = false;
+        document.getElementById(`like_btn${i}`).src = "./icn/noneliked.png";
+        document.getElementById(`like_btn${i}`).style.width = "28px";
+    }
+
 }
 
 
-// likes section
+
 function likeBook(j) {
     let likeAmount = document.getElementById(`like_amount${j}`);
 
@@ -281,17 +316,3 @@ function likeBook(j) {
     likeAmount.innerHTML = `Likes: ${books[j].likes}`;
 }
 
-
-
-// add comments section
-function addNewComment(element, i) {
-    let newCommentRef = document.getElementById('comment_input');
-    let newComment = newCommentRef.value;
-
-    if (newCommentRef.value != "" ) {
-        element.comments[i].comment.push(newComment);
-
-
-        newCommentRef.value = "";
-    }
-}
